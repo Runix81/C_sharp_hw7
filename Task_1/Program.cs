@@ -8,21 +8,27 @@
 
 double[,] AddArray(string numrow, string numcol)
 {
-    Random rnd = new Random();
     System.Console.Write($"{numrow} -> ");
     int row = Convert.ToInt32(Console.ReadLine());
     System.Console.Write($"{numcol} -> ");
     int col = Convert.ToInt32(Console.ReadLine());
     double[,] array = new double[row, col];
+    return array;
+}
+
+//Метод заполнения массива
+
+double[,] FillArray(double[,] array)
+{
+    Random rnd = new Random();
     for (int i = 0; i < array.GetLength(0); i++)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            array[i, j] = rnd.NextDouble()*rnd.Next(-10,11);
+            array[i, j] = rnd.NextDouble() * rnd.Next(-10, 11);
         }
     }
     return array;
-
 }
 
 // Метод вывода массива в консоль
@@ -33,10 +39,10 @@ void PrintArray(double[,] array)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            System.Console.Write($"{array[i,j]:f2} | ");
+            System.Console.Write($"{array[i, j]:f2} | ");
         }
         System.Console.WriteLine();
     }
 }
 
-PrintArray(AddArray("Введите количество строк", "Введите количество столбцов"));
+PrintArray(FillArray(AddArray("Введите количество строк", "Введите количество столбцов")));
